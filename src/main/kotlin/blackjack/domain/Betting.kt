@@ -5,6 +5,6 @@ value class Betting(
     val amount: Double,
 ) {
     init {
-        require(amount > 0) { "Amount must be greater than 0" }
+        require(amount > 0) { "Amount must be greater than 0. amount was $amount" }
     }
 }
