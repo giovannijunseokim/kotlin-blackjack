@@ -8,7 +8,6 @@ import blackjack.domain.card.Suit
 import blackjack.domain.participant.Dealer
 import blackjack.domain.participant.Participant
 import blackjack.domain.participant.Player
-import blackjack.domain.state.ParticipantState
 import blackjack.view.model.DealerSummary
 import blackjack.view.model.PlayerConfig
 import blackjack.view.model.PlayerResult
@@ -71,5 +70,10 @@ private val Player.summary: PlayerSummary
 val List<Player>.summaries: List<PlayerSummary>
     get() = map { player -> player.summary }
 
-fun List<Player>.toResults(dealerState: ParticipantState): List<PlayerResult> =
-    map { player -> PlayerResult(player.name, player.calculateProfit(dealerState).toInt()) }
+fun List<Player>.toResults(dealer: Dealer): List<PlayerResult> =
+    map { player ->
+        PlayerResult(
+            player.name,
+            dealer.playerProfit(player).toInt(),
+        )
+    }

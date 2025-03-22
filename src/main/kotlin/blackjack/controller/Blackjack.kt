@@ -87,6 +87,6 @@ class Blackjack(
             dealer.summary,
             players.summaries,
         )
-        resultView.showProfit(players.toResults(dealer.state))
+        resultView.showProfit(players.toResults(dealer))
     }
 }
